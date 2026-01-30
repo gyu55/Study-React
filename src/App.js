@@ -1,12 +1,10 @@
 import "./App.css";
-import Color from "./state/Color";
-import Hobby from "./state/Hobby";
-import Name from "./state/Name";
+import CheckboxContainer from "./map/expert/CheckboxContainer";
 
 function App() {
   return (
     <>
-      <Hobby />
+      <CheckboxContainer></CheckboxContainer>
     </>
   );
 }
