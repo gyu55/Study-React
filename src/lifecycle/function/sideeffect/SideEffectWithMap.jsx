@@ -1,0 +1,45 @@
+import React, { useEffect, useState } from 'react';
+import UserName from './UserName';
+
+const SideEffectWithMap = () => {
+
+  // https://jsonplaceholder.typicode.com/todos
+  // useEffect()
+  // username만 화면에 p태그로 출력하기 -> 컴포넌트로 분리
+  const [todos, settodos] = useState([])
+  const [isFalse, setIsFalse] = useState(false)
+  const [number, setNumber] = useState(0)
+
+  useEffect(() => {
+    const getTodos = async () => {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_start=${number * 15}&_limit=15`)
+      if(!response.ok) throw new Error("getTodos fetching error")
+      const todos = await response.json()
+      console.log("요청")
+      return todos
+    }
+    getTodos()
+      .then((todos) => todos.map(({title}) => title))
+      .then(settodos)
+      .catch(console.error)
+  }, [number])
+
+  console.log("리랜더링")
+
+  const titles = todos.map((name, i) => (
+    <UserName key={i} name={name} />
+  ))
+
+  const handleNumberOnClick = () => {
+    setNumber(number + 1)
+  }
+
+  return (
+    <div>
+      <button onClick={() => setIsFalse(!isFalse)}>재요청!</button>
+      {titles}
+    </div>
+  );
+};
+
+export default SideEffectWithMap;

@@ -1,9 +1,15 @@
-import FoodContainer from "./ref/expert/FoodContainer";
+// import CharContainer from "./context/basic/CharContainer";
+
+import AnimalsContainer from "./context/expert/AnimalsContainer";
+
+// import ChildInputComponent from "./context/normal/ChildInputComponent";
 
 function App() {
   return (
     <>
-      <FoodContainer />
+      {/* <CharContainer /> */}
+      {/* <ChildInputComponent /> */}
+      <AnimalsContainer />
     </>
   );
 }
