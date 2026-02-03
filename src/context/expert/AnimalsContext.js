@@ -8,15 +8,16 @@ export const AnimalsContext = createContext({
 
 // 2. 제공
 export const AnimalsProvider = ({children}) => {
-  
+  const [animalButton, setAnimalButton] = useState([])
   const [animals, setAnimals] = useState(["누렁이", "점박이", "얼룩이"])
   const value = {
     state: {
-      animals
+      animals,
+      animalButton
     },
     actions: {
-      insert: () => {
-        
+      insert: (animals) => {
+        setAnimalButton([...animalButton,animals])
       },
       remove: () => {}
     }
@@ -29,6 +30,9 @@ export const AnimalsProvider = ({children}) => {
   return (
     <AnimalsContext.Provider value={value}>
       {children}
+      {/* 이건 잘 나옴 */}
+      {console.log(animalButton)} 
+      
     </AnimalsContext.Provider>
   )
 }
