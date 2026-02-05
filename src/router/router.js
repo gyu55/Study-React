@@ -10,6 +10,12 @@ import Community from "./detail/Community";
 import NotFound from "./notfound/NotFound";
 import User from "../user/User";
 import NotUser from "../user/NotUser";
+import Zustand01 from "../zustand/Zustand01";
+import ZustandLayout from "../zustand/ZustandLayout";
+import Zustand02 from "../zustand/Zustand02";
+import Zustand03 from "../zustand/Zustand03";
+import AuthLayout from "../zustand/AuthLayout";
+import SignUp from "../hooks/SignUp";
 
 // 구분점이 필요!
 //         path를 통해서도 값을 넘길 수 있다.
@@ -63,6 +69,30 @@ const router = createBrowserRouter([
         element: <NotUser />
       },
     ]
+  },
+  {
+    path: "/zustand",
+    element: <ZustandLayout />,
+    children: [
+      {
+        path: "02",
+        element: <Zustand02 />
+      },
+      {
+        path: "03",
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "",
+            element: <Zustand03 />
+          }
+        ]
+      },
+    ]
+  },
+  {
+    path: "sign-up", // 가독성으로 인해 경로는 케밥표기법 사용해야 함
+    element: <SignUp />
   },
   { // 선언된 페이지를 제외하고 모든 페이지들은 예외 페이지 (NotFound Page)
     path: "*",

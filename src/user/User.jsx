@@ -12,9 +12,10 @@ const User = () => {
   }
 
   const {state, actions} = useContext(RouteContext)
-  const {setUser, setPreviousUrl} = actions
+  const {setUser, setPreviousUrl, setIsLogin} = actions
   useEffect(() => {
     setUser(user)
+    setIsLogin(true)
   }, [])
   console.log("state", state)
   console.log("actions", actions)
